@@ -17,19 +17,21 @@ allowed_filters = re.compile(r'^(username|email|gender|title|first_name|'
 def create_or_update_user(request, user=None):
     # Parse JSON data
     try:
-        data = json.loads(request.body.decode(request.encoding))
+        data = json.loads(request.body.decode(request.encoding or 'utf-8'))
     except ValueError as e:
-        return JsonResponse({'error': 'Unable to parse JSON. {}'.format(e)})
+        return JsonResponse({'error': 'Unable to parse JSON. {}'.format(e)},
+                            status=400)
 
     # Validate data
     serializer = UserSerializer(data, instance=user)
     if not serializer.is_valid():
         return HttpResponse(serializer.errors.as_json(), status=400,
-                            content_type='application_json')
+                            content_type='application/json')
 
     # Create or update user
+    status = 200 if user else 201
     user = serializer.save()
-    return JsonResponse(user.as_dict(request), status=200 if user else 201)
+    return JsonResponse(user.as_dict(request), status=status)
 
 
 class Users(View):
