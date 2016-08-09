@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 import os
 
@@ -35,8 +35,10 @@ class Command(BaseCommand):
                     md5=user['md5'],
                     sha1=user['sha1'],
                     sha256=user['sha256'],
-                    registered=datetime.fromtimestamp(user['registered']),
-                    dob=datetime.fromtimestamp(user['dob']),
+                    registered=datetime.fromtimestamp(
+                        user['registered'], tz=timezone.utc),
+                    dob=datetime.fromtimestamp(
+                        user['dob'], tz=timezone.utc),
                     phone=user['phone'],
                     cell=user['cell'],
                     pps=user['PPS'],

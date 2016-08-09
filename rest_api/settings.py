@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # this is just a demo project, I've opted to leave it here.
 SECRET_KEY = 'aa!4_+x++p9i#ckc!c2e7@hbhztq3vc1=po&ga*futri#%qm4='
 
-# Set to true for easy demo purposes. Should not be true in production.
+# Set to true for easy demoing. Should not be true in production.
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -40,3 +40,5 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+USE_TZ = True
