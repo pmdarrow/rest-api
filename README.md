@@ -2,7 +2,7 @@
 
 A Django-based RESTful API for managing a directory of users.
 
-# Bootstrapping
+## Bootstrapping
 
 ```
 $ pip install virtualenvwrapper
@@ -11,20 +11,20 @@ $ mkvirtualenv rest-api -p python3.4
 $ pip install -r requirements.txt
 ```
 
-# Starting Server
+## Starting Server
 
 ```
 $ ./manage.py migrate
 $ ./manage.py runserver
 ```
 
-# Importing Initial User Data
+## Importing Initial User Data
 
 ```
 $ ./manage.py import_users
 ```
 
-# Running Tests
+## Running Tests
 
 ```
 $ ./manage.py test
