@@ -2,7 +2,7 @@
 
 A Django-based RESTful API for managing a directory of users.
 
-## Usage Notes
+## Implementation Notes
 
 - All standard REST functionality is supported, with the exception of partial
 updates via PATCH. Only complete updates with PUT are supported.
@@ -12,8 +12,8 @@ updates via PATCH. Only complete updates with PUT are supported.
 - The user model was flattened to make the filtering API simpler. Given
 some more time, filtering could be improved to support nested objects.
 - Limitations: most fields can be filtered or searched with the exception of 
-zip, registered, dob and URL fields. More work needs to be completed to support 
-integer and date types.
+zip, registered, dob and URL fields. More work needs to be done to support
+these.
 - The database I selected for demo purposes is sqlite3, but this shouldn't be
 used in production. I would likely use PostgreSQL or MySQL.
 
