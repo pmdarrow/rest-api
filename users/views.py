@@ -1,10 +1,17 @@
 import json
+import re
 
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import View
 
 from .forms import UserSerializer
 from .models import User
+
+
+allowed_filters = re.compile(r'^(username|email|gender|title|first_name|'
+                             r'last_name|street|city|state|phone|cell|pps|'
+                             r'large_picture|medium_picture|'
+                             r'thumbnail_picture)(__contains)?$')
 
 
 def create_or_update_user(request, user=None):
@@ -28,7 +35,13 @@ def create_or_update_user(request, user=None):
 class Users(View):
     def get(self, request):
         """List users"""
-        users = [user.as_dict(request) for user in User.objects.all()]
+        # Strip out unsupported filter/search params
+        filter_params = {k: v for k, v in request.GET.items()
+                         if re.match(allowed_filters, k)}
+
+        # Do filtering/searching
+        queryset = User.objects.filter(**filter_params)
+        users = [user.as_dict(request) for user in queryset]
         return JsonResponse(users, safe=False, status=200)
 
     def post(self, request):
