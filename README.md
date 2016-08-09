@@ -21,5 +21,5 @@ $ ./manage.py runserver
 # Running Tests
 
 ```
-$ py.test
+$ ./manage.py test
 ```
