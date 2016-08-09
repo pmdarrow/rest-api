@@ -4,8 +4,8 @@ from .models import User
 
 
 class UserSerializer(ModelForm):
-    registered = fields.DateTimeField(input_formats=['%Y-%m-%dT%H:%M:%SZ'])
-    dob = fields.DateTimeField(input_formats=['%Y-%m-%dT%H:%M:%SZ'])
+    registered = fields.DateTimeField(input_formats=['%Y-%m-%dT%H:%M:%S'])
+    dob = fields.DateTimeField(input_formats=['%Y-%m-%dT%H:%M:%S'])
 
     class Meta:
         model = User

@@ -35,10 +35,8 @@ class Command(BaseCommand):
                     md5=user['md5'],
                     sha1=user['sha1'],
                     sha256=user['sha256'],
-                    registered=datetime.fromtimestamp(
-                        user['registered'], tz=timezone.utc),
-                    dob=datetime.fromtimestamp(
-                        user['dob'], tz=timezone.utc),
+                    registered=datetime.utcfromtimestamp(user['registered']),
+                    dob=datetime.utcfromtimestamp(user['dob']),
                     phone=user['phone'],
                     cell=user['cell'],
                     pps=user['PPS'],
