@@ -18,6 +18,12 @@ $ ./manage.py migrate
 $ ./manage.py runserver
 ```
 
+# Importing Initial User Data
+
+```
+$ ./manage.py import_users
+```
+
 # Running Tests
 
 ```
